@@ -11,6 +11,7 @@ export interface UseDateTimePickerProps {
   minBookingDate?: Date
   maxBookingDate?: Date
   selectedDate: Date | null
+  focusedTarget: FocusedTarget
   numberOfMonths?: number
   firstDayOfWeek?: FirstDayOfWeek
   initialVisibleMonth?: Date
@@ -21,6 +22,7 @@ export declare function useDateTimePicker({
   selectedDate,
   minBookingDate,
   maxBookingDate,
+  focusedTarget,
   onDateChange,
   initialVisibleMonth,
   numberOfMonths,
@@ -33,6 +35,7 @@ export declare function useDateTimePicker({
   disabledDatesByUser: (date: Date) => boolean
   isDateBlocked: (date: Date) => boolean
   onResetDates: () => void
+  focusedTarget: FocusedTarget
   onDateSelect: (date: Date) => void
   onTimeSelect: (date: Date) => void
   goToPreviousMonths: () => void

@@ -2571,73 +2571,74 @@ function xe(t) {
     var n = e.selectedDate,
       r = e.minBookingDate,
       a = e.maxBookingDate,
-      i = e.onDateChange,
-      o = e.initialVisibleMonth,
-      u = e.numberOfMonths,
-      s = void 0 === u ? 2 : u,
-      c = e.firstDayOfWeek,
-      d = void 0 === c ? 1 : c,
-      l = e.isDateBlocked,
-      f =
-        void 0 === l
+      i = e.focusedTarget,
+      o = e.onDateChange,
+      u = e.initialVisibleMonth,
+      s = e.numberOfMonths,
+      c = void 0 === s ? 2 : s,
+      d = e.firstDayOfWeek,
+      l = void 0 === d ? 1 : d,
+      f = e.isDateBlocked,
+      h =
+        void 0 === f
           ? function () {
               return !1
             }
-          : l,
-      h = e.unavailableDates,
-      m = void 0 === h ? [] : h,
-      g = t.useState(function () {
-        return De(s, n || o || null)
+          : f,
+      m = e.unavailableDates,
+      g = void 0 === m ? [] : m,
+      w = t.useState(function () {
+        return De(c, n || u || null)
       }),
-      w = g[0],
-      v = g[1],
-      b = t.useCallback(
-        function () {
-          v(Te(w, s, -1))
-        },
-        [w, s],
-      ),
+      v = w[0],
+      b = w[1],
       y = t.useCallback(
         function () {
-          v(Te(w, s, -1, 1))
+          b(Te(v, c, -1))
         },
-        [w, s],
+        [v, c],
       ),
       D = t.useCallback(
         function () {
-          v(Te(w, s, 1))
+          b(Te(v, c, -1, 1))
         },
-        [w, s],
+        [v, c],
       ),
       T = t.useCallback(
         function () {
-          v(Te(w, s, 1, 1))
+          b(Te(v, c, 1))
         },
-        [w, s],
+        [v, c],
       ),
       p = t.useCallback(
-        function (t) {
-          v(De(s, t))
+        function () {
+          b(Te(v, c, 1, 1))
         },
-        [s],
+        [v, c],
       ),
       k = t.useCallback(
         function (t) {
-          void 0 === t && (t = 1), v(Te(w, s, -(12 * t - s + 1)))
+          b(De(c, t))
         },
-        [w, s],
+        [c],
       ),
       x = t.useCallback(
         function (t) {
-          void 0 === t && (t = 1), v(Te(w, s, 12 * t - s + 1))
+          void 0 === t && (t = 1), b(Te(v, c, -(12 * t - c + 1)))
         },
-        [w, s],
+        [v, c],
+      ),
+      C = t.useCallback(
+        function (t) {
+          void 0 === t && (t = 1), b(Te(v, c, 12 * t - c + 1))
+        },
+        [v, c],
       )
     return {
-      activeMonths: w,
-      firstDayOfWeek: d,
+      activeMonths: v,
+      firstDayOfWeek: l,
       disabledDatesByUser: function (t) {
-        return fe(m, t) || f(t)
+        return fe(g, t) || h(t)
       },
       isDateBlocked: function (t) {
         return (function (t) {
@@ -2649,24 +2650,25 @@ function xe(t) {
             o = n ? new Date(n.getFullYear(), n.getMonth(), n.getDate(), 0, 0, 0) : n,
             u = r ? new Date(r.getFullYear(), r.getMonth(), r.getDate(), 0, 0, 0) : r
           return !!(fe(i, e) || (o && oe(e, o)) || (u && ue(e, u)))
-        })({date: t, minBookingDate: r, maxBookingDate: a, unavailableDates: m})
+        })({date: t, minBookingDate: r, maxBookingDate: a, unavailableDates: g})
       },
       onResetDates: function () {
-        i({focusedTarget: null, selectedDate: null})
+        o({focusedTarget: null, selectedDate: null})
       },
+      focusedTarget: i,
       onDateSelect: function (t) {
-        i({selectedDate: t, focusedTarget: 'date'})
+        o({selectedDate: t, focusedTarget: 'date'})
       },
       onTimeSelect: function (t) {
-        i({selectedDate: t, focusedTarget: null})
+        o({selectedDate: t, focusedTarget: null})
       },
-      goToPreviousMonths: b,
-      goToPreviousMonthsByOneMonth: y,
-      goToNextMonths: D,
-      goToNextMonthsByOneMonth: T,
-      goToDate: p,
-      goToPreviousYear: k,
-      goToNextYear: x,
+      goToPreviousMonths: y,
+      goToPreviousMonthsByOneMonth: D,
+      goToNextMonths: T,
+      goToNextMonthsByOneMonth: p,
+      goToDate: k,
+      goToPreviousYear: x,
+      goToNextYear: C,
     }
   }),
   (exports.useDatepicker = function (e) {

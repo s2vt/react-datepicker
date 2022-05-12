@@ -2805,73 +2805,74 @@ function qe(t) {
   var n = t.selectedDate,
     a = t.minBookingDate,
     i = t.maxBookingDate,
-    o = t.onDateChange,
-    u = t.initialVisibleMonth,
-    s = t.numberOfMonths,
-    c = void 0 === s ? 2 : s,
-    d = t.firstDayOfWeek,
-    l = void 0 === d ? 1 : d,
-    f = t.isDateBlocked,
-    h =
-      void 0 === f
+    o = t.focusedTarget,
+    u = t.onDateChange,
+    s = t.initialVisibleMonth,
+    c = t.numberOfMonths,
+    d = void 0 === c ? 2 : c,
+    l = t.firstDayOfWeek,
+    f = void 0 === l ? 1 : l,
+    h = t.isDateBlocked,
+    m =
+      void 0 === h
         ? function () {
             return !1
           }
-        : f,
-    m = t.unavailableDates,
-    g = void 0 === m ? [] : m,
-    w = e(function () {
-      return Ce(c, n || u || null)
+        : h,
+    g = t.unavailableDates,
+    w = void 0 === g ? [] : g,
+    v = e(function () {
+      return Ce(d, n || s || null)
     }),
-    v = w[0],
-    y = w[1]
-  var b = r(
+    y = v[0],
+    b = v[1]
+  var D = r(
       function () {
-        y(Me(v, c, -1))
+        b(Me(y, d, -1))
       },
-      [v, c],
-    ),
-    D = r(
-      function () {
-        y(Me(v, c, -1, 1))
-      },
-      [v, c],
+      [y, d],
     ),
     T = r(
       function () {
-        y(Me(v, c, 1))
+        b(Me(y, d, -1, 1))
       },
-      [v, c],
+      [y, d],
     ),
     p = r(
       function () {
-        y(Me(v, c, 1, 1))
+        b(Me(y, d, 1))
       },
-      [v, c],
+      [y, d],
     ),
     k = r(
-      function (t) {
-        y(Ce(c, t))
+      function () {
+        b(Me(y, d, 1, 1))
       },
-      [c],
+      [y, d],
     ),
     x = r(
       function (t) {
-        void 0 === t && (t = 1), y(Me(v, c, -(12 * t - c + 1)))
+        b(Ce(d, t))
       },
-      [v, c],
+      [d],
     ),
     C = r(
       function (t) {
-        void 0 === t && (t = 1), y(Me(v, c, 12 * t - c + 1))
+        void 0 === t && (t = 1), b(Me(y, d, -(12 * t - d + 1)))
       },
-      [v, c],
+      [y, d],
+    ),
+    M = r(
+      function (t) {
+        void 0 === t && (t = 1), b(Me(y, d, 12 * t - d + 1))
+      },
+      [y, d],
     )
   return {
-    activeMonths: v,
-    firstDayOfWeek: l,
+    activeMonths: y,
+    firstDayOfWeek: f,
     disabledDatesByUser: function (t) {
-      return ve(g, t) || h(t)
+      return ve(w, t) || m(t)
     },
     isDateBlocked: function (t) {
       return (function (t) {
@@ -2883,24 +2884,25 @@ function qe(t) {
           o = n ? new Date(n.getFullYear(), n.getMonth(), n.getDate(), 0, 0, 0) : n,
           u = r ? new Date(r.getFullYear(), r.getMonth(), r.getDate(), 0, 0, 0) : r
         return !!(ve(i, e) || (o && le(e, o)) || (u && fe(e, u)))
-      })({date: t, minBookingDate: a, maxBookingDate: i, unavailableDates: g})
+      })({date: t, minBookingDate: a, maxBookingDate: i, unavailableDates: w})
     },
     onResetDates: function () {
-      o({focusedTarget: null, selectedDate: null})
+      u({focusedTarget: null, selectedDate: null})
     },
+    focusedTarget: o,
     onDateSelect: function (t) {
-      o({selectedDate: t, focusedTarget: 'date'})
+      u({selectedDate: t, focusedTarget: 'date'})
     },
     onTimeSelect: function (t) {
-      o({selectedDate: t, focusedTarget: null})
+      u({selectedDate: t, focusedTarget: null})
     },
-    goToPreviousMonths: b,
-    goToPreviousMonthsByOneMonth: D,
-    goToNextMonths: T,
-    goToNextMonthsByOneMonth: p,
-    goToDate: k,
-    goToPreviousYear: x,
-    goToNextYear: C,
+    goToPreviousMonths: D,
+    goToPreviousMonthsByOneMonth: T,
+    goToNextMonths: p,
+    goToNextMonthsByOneMonth: k,
+    goToDate: x,
+    goToPreviousYear: C,
+    goToNextYear: M,
   }
 }
 function He(t) {
