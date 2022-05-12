@@ -2,10 +2,11 @@ import {format} from 'date-fns'
 import {GetTimeProps, getTimes} from './useTimes.utils'
 
 describe('useTimes utils', () => {
+  const baseDate = new Date()
   describe('getTimes', () => {
     test('should return times with default format', () => {
       // given
-      const getTimeProps: GetTimeProps = {}
+      const getTimeProps: GetTimeProps = {baseDate}
 
       // when
       const result = getTimes(getTimeProps)
@@ -22,7 +23,10 @@ describe('useTimes utils', () => {
 
     test('should return times custom format', () => {
       // given
-      const getTimeProps: GetTimeProps = {timeLabelFormat: (date: Date) => format(date, 'HH,mm,ss')}
+      const getTimeProps: GetTimeProps = {
+        baseDate,
+        timeLabelFormat: (date: Date) => format(date, 'HH,mm,ss'),
+      }
 
       // when
       const result = getTimes(getTimeProps)
@@ -37,7 +41,7 @@ describe('useTimes utils', () => {
 
     test('should return times with default format', () => {
       // given
-      const getTimeProps: GetTimeProps = {minutesStep: 1}
+      const getTimeProps: GetTimeProps = {baseDate, minutesStep: 1}
 
       // when
       const result = getTimes(getTimeProps)

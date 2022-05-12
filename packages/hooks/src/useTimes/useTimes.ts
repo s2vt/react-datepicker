@@ -14,7 +14,7 @@ export type CompareTime = {
 }
 
 export interface UseTimesProps {
-  date: Date
+  baseDate: Date
   onTimeChange(date: Date): void
   minTime?: CompareTime
   maxTime?: CompareTime
@@ -22,13 +22,17 @@ export interface UseTimesProps {
   timeLabelFormat?: (date: Date) => string
 }
 
-export function useTimes({minTime, maxTime, minutesStep, timeLabelFormat}: UseTimesProps) {
-  const times = useMemo(() => getTimes({minTime, maxTime, minutesStep, timeLabelFormat}), [
-    minTime,
-    maxTime,
-    minutesStep,
-    timeLabelFormat,
-  ])
+export function useTimes({
+  baseDate,
+  minTime,
+  maxTime,
+  minutesStep,
+  timeLabelFormat,
+}: UseTimesProps) {
+  const times = useMemo(
+    () => getTimes({baseDate, minTime, maxTime, minutesStep, timeLabelFormat}),
+    [baseDate, minTime, maxTime, minutesStep, timeLabelFormat],
+  )
 
   return {times}
 }

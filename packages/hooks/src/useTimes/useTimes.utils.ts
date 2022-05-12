@@ -1,7 +1,8 @@
-import {addMinutes, startOfDay, isAfter, isBefore, isEqual, format} from 'date-fns'
+import {addMinutes, isAfter, isBefore, isEqual, format, startOfDay} from 'date-fns'
 import {CompareTime, Time} from './useTimes'
 
 export interface GetTimeProps {
+  baseDate: Date
   minTime?: CompareTime
   maxTime?: CompareTime
   minutesStep?: number
@@ -9,17 +10,16 @@ export interface GetTimeProps {
 }
 
 export function getTimes({
+  baseDate,
   minTime,
   maxTime,
   minutesStep = 5,
   timeLabelFormat = (date: Date) => format(date, 'HH:mm:ss'),
 }: GetTimeProps) {
-  const base = startOfDay(new Date())
-
   const multiplier = (60 * 24) / minutesStep
 
   const times = Array.from({length: multiplier}).map((_, index) =>
-    addMinutes(base, index * minutesStep),
+    addMinutes(startOfDay(baseDate), index * minutesStep),
   )
 
   return times.map(date => getTime({date, minTime, maxTime, timeLabelFormat}))
