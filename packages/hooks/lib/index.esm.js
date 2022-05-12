@@ -408,16 +408,16 @@ function m(t) {
         console.warn(new Error().stack)),
       new Date(NaN))
 }
-function w(t, e) {
+function g(t, e) {
   h(2, arguments)
   var n = m(t).getTime(),
     r = f(e)
   return new Date(n + r)
 }
-function g(t, e) {
+function w(t, e) {
   h(2, arguments)
   var n = f(e)
-  return w(t, -n)
+  return g(t, -n)
 }
 function v(t, e) {
   if (null == t)
@@ -537,10 +537,10 @@ function P(t, e) {
   var d = S(c, e),
     l = new Date(0)
   l.setUTCFullYear(r, 0, s), l.setUTCHours(0, 0, 0, 0)
-  var w = S(l, e)
-  return n.getTime() >= d.getTime() ? r + 1 : n.getTime() >= w.getTime() ? r : r - 1
+  var g = S(l, e)
+  return n.getTime() >= d.getTime() ? r + 1 : n.getTime() >= g.getTime() ? r : r - 1
 }
-function E(t, e, n) {
+function Y(t, e, n) {
   h(2, arguments)
   var r = n || {},
     a = r.locale,
@@ -552,11 +552,11 @@ function E(t, e, n) {
     c = f(e),
     d = s.getUTCDay(),
     l = c % 7,
-    w = (l + 7) % 7,
-    g = (w < u ? 7 : 0) + c - d
-  return s.setUTCDate(s.getUTCDate() + g), s
+    g = (l + 7) % 7,
+    w = (g < u ? 7 : 0) + c - d
+  return s.setUTCDate(s.getUTCDate() + w), s
 }
-function Y(t) {
+function B(t) {
   h(1, arguments)
   var e = 1,
     n = m(t),
@@ -564,33 +564,33 @@ function Y(t) {
     a = (r < e ? 7 : 0) + r - e
   return n.setUTCDate(n.getUTCDate() - a), n.setUTCHours(0, 0, 0, 0), n
 }
-function N(t) {
+function E(t) {
   h(1, arguments)
   var e = m(t),
     n = e.getUTCFullYear(),
     r = new Date(0)
   r.setUTCFullYear(n + 1, 0, 4), r.setUTCHours(0, 0, 0, 0)
-  var a = Y(r),
+  var a = B(r),
     i = new Date(0)
   i.setUTCFullYear(n, 0, 4), i.setUTCHours(0, 0, 0, 0)
-  var o = Y(i)
+  var o = B(i)
   return e.getTime() >= a.getTime() ? n + 1 : e.getTime() >= o.getTime() ? n : n - 1
 }
-function q(t) {
+function N(t) {
   h(1, arguments)
-  var e = N(t),
+  var e = E(t),
     n = new Date(0)
   n.setUTCFullYear(e, 0, 4), n.setUTCHours(0, 0, 0, 0)
-  var r = Y(n)
+  var r = B(n)
   return r
 }
-function B(t) {
+function O(t) {
   h(1, arguments)
   var e = m(t),
-    n = Y(e).getTime() - q(e).getTime()
+    n = B(e).getTime() - N(e).getTime()
   return Math.round(n / 6048e5) + 1
 }
-function O(t, e) {
+function q(t, e) {
   h(1, arguments)
   var n = e || {},
     r = n.locale,
@@ -606,26 +606,26 @@ function O(t, e) {
 function H(t, e) {
   h(1, arguments)
   var n = m(t),
-    r = S(n, e).getTime() - O(n, e).getTime()
+    r = S(n, e).getTime() - q(n, e).getTime()
   return Math.round(r / 6048e5) + 1
 }
 var L = /^(1[0-2]|0?\d)/,
-  W = /^(3[0-1]|[0-2]?\d)/,
-  F = /^(36[0-6]|3[0-5]\d|[0-2]?\d?\d)/,
+  F = /^(3[0-1]|[0-2]?\d)/,
+  W = /^(36[0-6]|3[0-5]\d|[0-2]?\d?\d)/,
   Q = /^(5[0-3]|[0-4]?\d)/,
   R = /^(2[0-3]|[0-1]?\d)/,
   I = /^(2[0-4]|[0-1]?\d)/,
   X = /^(1[0-1]|0?\d)/,
-  G = /^(1[0-2]|0?\d)/,
-  A = /^[0-5]?\d/,
+  A = /^(1[0-2]|0?\d)/,
+  G = /^[0-5]?\d/,
   z = /^[0-5]?\d/,
   j = /^\d/,
   K = /^\d{1,2}/,
   J = /^\d{1,3}/,
   Z = /^\d{1,4}/,
   _ = /^-?\d+/,
-  $ = /^-?\d/,
-  V = /^-?\d{1,2}/,
+  V = /^-?\d/,
+  $ = /^-?\d{1,2}/,
   tt = /^-?\d{1,3}/,
   et = /^-?\d{1,4}/,
   nt = /^([+-])(\d{2})(\d{2})?|Z/,
@@ -674,9 +674,9 @@ function dt(t, e, n) {
 function lt(t, e, n) {
   switch (t) {
     case 1:
-      return ut($, e, n)
-    case 2:
       return ut(V, e, n)
+    case 2:
+      return ut($, e, n)
     case 3:
       return ut(tt, e, n)
     case 4:
@@ -714,8 +714,8 @@ function ht(t, e) {
   return r ? n : 1 - n
 }
 var mt = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-  wt = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-function gt(t) {
+  gt = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+function wt(t) {
   return t % 400 == 0 || (t % 4 == 0 && t % 100 != 0)
 }
 var vt = {
@@ -808,7 +808,7 @@ var vt = {
       },
       set: function (t, e, n, r) {
         var a = new Date(0)
-        return a.setUTCFullYear(n, 0, 4), a.setUTCHours(0, 0, 0, 0), Y(a)
+        return a.setUTCFullYear(n, 0, 4), a.setUTCHours(0, 0, 0, 0), B(a)
       },
       incompatibleTokens: [
         'G',
@@ -1023,12 +1023,12 @@ var vt = {
         return e >= 1 && e <= 53
       },
       set: function (t, e, n, r) {
-        return Y(
+        return B(
           (function (t, e) {
             h(2, arguments)
             var n = m(t),
               r = f(e),
-              a = B(n) - r
+              a = O(n) - r
             return n.setUTCDate(n.getUTCDate() - 7 * a), n
           })(t, n, r),
           r,
@@ -1041,7 +1041,7 @@ var vt = {
       parse: function (t, e, n, r) {
         switch (e) {
           case 'd':
-            return ut(W, t)
+            return ut(F, t)
           case 'do':
             return n.ordinalNumber(t, {unit: 'date'})
           default:
@@ -1049,9 +1049,9 @@ var vt = {
         }
       },
       validate: function (t, e, n) {
-        var r = gt(t.getUTCFullYear()),
+        var r = wt(t.getUTCFullYear()),
           a = t.getUTCMonth()
-        return r ? e >= 1 && e <= wt[a] : e >= 1 && e <= mt[a]
+        return r ? e >= 1 && e <= gt[a] : e >= 1 && e <= mt[a]
       },
       set: function (t, e, n, r) {
         return t.setUTCDate(n), t.setUTCHours(0, 0, 0, 0), t
@@ -1064,7 +1064,7 @@ var vt = {
         switch (e) {
           case 'D':
           case 'DD':
-            return ut(F, t)
+            return ut(W, t)
           case 'Do':
             return n.ordinalNumber(t, {unit: 'date'})
           default:
@@ -1072,7 +1072,7 @@ var vt = {
         }
       },
       validate: function (t, e, n) {
-        return gt(t.getUTCFullYear()) ? e >= 1 && e <= 366 : e >= 1 && e <= 365
+        return wt(t.getUTCFullYear()) ? e >= 1 && e <= 366 : e >= 1 && e <= 365
       },
       set: function (t, e, n, r) {
         return t.setUTCMonth(0, n), t.setUTCHours(0, 0, 0, 0), t
@@ -1128,7 +1128,7 @@ var vt = {
         return e >= 0 && e <= 6
       },
       set: function (t, e, n, r) {
-        return (t = E(t, n, r)).setUTCHours(0, 0, 0, 0), t
+        return (t = Y(t, n, r)).setUTCHours(0, 0, 0, 0), t
       },
       incompatibleTokens: ['D', 'i', 'e', 'c', 't', 'T'],
     },
@@ -1172,7 +1172,7 @@ var vt = {
         return e >= 0 && e <= 6
       },
       set: function (t, e, n, r) {
-        return (t = E(t, n, r)).setUTCHours(0, 0, 0, 0), t
+        return (t = Y(t, n, r)).setUTCHours(0, 0, 0, 0), t
       },
       incompatibleTokens: [
         'y',
@@ -1232,7 +1232,7 @@ var vt = {
         return e >= 0 && e <= 6
       },
       set: function (t, e, n, r) {
-        return (t = E(t, n, r)).setUTCHours(0, 0, 0, 0), t
+        return (t = Y(t, n, r)).setUTCHours(0, 0, 0, 0), t
       },
       incompatibleTokens: [
         'y',
@@ -1411,7 +1411,7 @@ var vt = {
       parse: function (t, e, n, r) {
         switch (e) {
           case 'h':
-            return ut(G, t)
+            return ut(A, t)
           case 'ho':
             return n.ordinalNumber(t, {unit: 'hour'})
           default:
@@ -1505,7 +1505,7 @@ var vt = {
       parse: function (t, e, n, r) {
         switch (e) {
           case 'm':
-            return ut(A, t)
+            return ut(G, t)
           case 'mo':
             return n.ordinalNumber(t, {unit: 'minute'})
           default:
@@ -1635,8 +1635,8 @@ function xt(t, e, n, r) {
     d = null == o.firstWeekContainsDate ? c : f(o.firstWeekContainsDate)
   if (!(d >= 1 && d <= 7))
     throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
-  var w = u.options && u.options.weekStartsOn,
-    y = null == w ? 0 : f(w),
+  var g = u.options && u.options.weekStartsOn,
+    y = null == g ? 0 : f(g),
     b = null == o.weekStartsOn ? y : f(o.weekStartsOn)
   if (!(b >= 0 && b <= 6)) throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   if ('' === i) return '' === a ? m(n) : new Date(NaN)
@@ -1653,53 +1653,53 @@ function xt(t, e, n, r) {
       .match(yt),
     P = []
   for (T = 0; T < S.length; T++) {
-    var E = S[T]
-    !o.useAdditionalWeekYearTokens && M(E) && U(E), !o.useAdditionalDayOfYearTokens && C(E) && U(E)
-    var Y = E[0],
-      N = vt[Y]
-    if (N) {
-      var q = N.incompatibleTokens
-      if (Array.isArray(q)) {
-        for (var B = void 0, O = 0; O < P.length; O++) {
-          var H = P[O].token
-          if (-1 !== q.indexOf(H) || H === Y) {
-            B = P[O]
+    var Y = S[T]
+    !o.useAdditionalWeekYearTokens && M(Y) && U(Y), !o.useAdditionalDayOfYearTokens && C(Y) && U(Y)
+    var B = Y[0],
+      E = vt[B]
+    if (E) {
+      var N = E.incompatibleTokens
+      if (Array.isArray(N)) {
+        for (var O = void 0, q = 0; q < P.length; q++) {
+          var H = P[q].token
+          if (-1 !== N.indexOf(H) || H === B) {
+            O = P[q]
             break
           }
         }
-        if (B)
+        if (O)
           throw new RangeError(
             "The format string mustn't contain `"
-              .concat(B.fullToken, '` and `')
-              .concat(E, '` at the same time'),
+              .concat(O.fullToken, '` and `')
+              .concat(Y, '` at the same time'),
           )
-      } else if ('*' === N.incompatibleTokens && P.length)
+      } else if ('*' === E.incompatibleTokens && P.length)
         throw new RangeError(
-          "The format string mustn't contain `".concat(E, '` and any other token at the same time'),
+          "The format string mustn't contain `".concat(Y, '` and any other token at the same time'),
         )
-      P.push({token: Y, fullToken: E})
-      var L = N.parse(a, E, u.match, k)
+      P.push({token: B, fullToken: Y})
+      var L = E.parse(a, Y, u.match, k)
       if (!L) return new Date(NaN)
       x.push({
-        priority: N.priority,
-        set: N.set,
-        validate: N.validate,
+        priority: E.priority,
+        set: E.set,
+        validate: E.validate,
         value: L.value,
         index: x.length,
       }),
         (a = L.rest)
     } else {
-      if (Y.match(kt))
+      if (B.match(kt))
         throw new RangeError(
-          'Format string contains an unescaped latin alphabet character `' + Y + '`',
+          'Format string contains an unescaped latin alphabet character `' + B + '`',
         )
-      if (("''" === E ? (E = "'") : "'" === Y && (E = Mt(E)), 0 !== a.indexOf(E)))
+      if (("''" === Y ? (Y = "'") : "'" === B && (Y = Mt(Y)), 0 !== a.indexOf(Y)))
         return new Date(NaN)
-      a = a.slice(E.length)
+      a = a.slice(Y.length)
     }
   }
   if (a.length > 0 && pt.test(a)) return new Date(NaN)
-  var W = x
+  var F = x
       .map(function (t) {
         return t.priority
       })
@@ -1719,12 +1719,12 @@ function xt(t, e, n, r) {
       .map(function (t) {
         return t[0]
       }),
-    F = m(n)
-  if (isNaN(F)) return new Date(NaN)
-  var Q = g(F, p(F)),
+    W = m(n)
+  if (isNaN(W)) return new Date(NaN)
+  var Q = w(W, p(W)),
     R = {}
-  for (T = 0; T < W.length; T++) {
-    var I = W[T]
+  for (T = 0; T < F.length; T++) {
+    var I = F[T]
     if (I.validate && !I.validate(Q, I.value, k)) return new Date(NaN)
     var X = I.set(Q, R, I.value, k)
     X[0] ? ((Q = X[0]), v(R, X[1])) : (Q = X)
@@ -1757,23 +1757,23 @@ var Pt = function (t, e) {
       r = n > 0 ? n : 1 - n
     return St('yy' === e ? r % 100 : r, e.length)
   },
-  Et = function (t, e) {
+  Yt = function (t, e) {
     var n = t.getUTCMonth()
     return 'M' === e ? String(n + 1) : St(n + 1, 2)
   },
-  Yt = function (t, e) {
+  Bt = function (t, e) {
     return St(t.getUTCDate(), e.length)
   },
-  Nt = function (t, e) {
+  Et = function (t, e) {
     return St(t.getUTCHours() % 12 || 12, e.length)
   },
-  qt = function (t, e) {
+  Nt = function (t, e) {
     return St(t.getUTCHours(), e.length)
   },
-  Bt = function (t, e) {
+  Ot = function (t, e) {
     return St(t.getUTCMinutes(), e.length)
   },
-  Ot = function (t, e) {
+  qt = function (t, e) {
     return St(t.getUTCSeconds(), e.length)
   },
   Ht = function (t, e) {
@@ -1782,8 +1782,8 @@ var Pt = function (t, e) {
     return St(Math.floor(r * Math.pow(10, n - 3)), e.length)
   }
 var Lt = 'midnight',
-  Wt = 'noon',
-  Ft = 'morning',
+  Ft = 'noon',
+  Wt = 'morning',
   Qt = 'afternoon',
   Rt = 'evening',
   It = 'night',
@@ -1820,7 +1820,7 @@ var Lt = 'midnight',
         : St(i, e.length)
     },
     R: function (t, e) {
-      return St(N(t), e.length)
+      return St(E(t), e.length)
     },
     u: function (t, e) {
       return St(t.getUTCFullYear(), e.length)
@@ -1866,7 +1866,7 @@ var Lt = 'midnight',
       switch (e) {
         case 'M':
         case 'MM':
-          return Et(t, e)
+          return Yt(t, e)
         case 'Mo':
           return n.ordinalNumber(r + 1, {unit: 'month'})
         case 'MMM':
@@ -1901,11 +1901,11 @@ var Lt = 'midnight',
       return 'wo' === e ? n.ordinalNumber(a, {unit: 'week'}) : St(a, e.length)
     },
     I: function (t, e, n) {
-      var r = B(t)
+      var r = O(t)
       return 'Io' === e ? n.ordinalNumber(r, {unit: 'week'}) : St(r, e.length)
     },
     d: function (t, e, n) {
-      return 'do' === e ? n.ordinalNumber(t.getUTCDate(), {unit: 'date'}) : Yt(t, e)
+      return 'do' === e ? n.ordinalNumber(t.getUTCDate(), {unit: 'date'}) : Bt(t, e)
     },
     D: function (t, e, n) {
       var r = (function (t) {
@@ -2015,7 +2015,7 @@ var Lt = 'midnight',
     b: function (t, e, n) {
       var r,
         a = t.getUTCHours()
-      switch (((r = 12 === a ? Wt : 0 === a ? Lt : a / 12 >= 1 ? 'pm' : 'am'), e)) {
+      switch (((r = 12 === a ? Ft : 0 === a ? Lt : a / 12 >= 1 ? 'pm' : 'am'), e)) {
         case 'b':
         case 'bb':
         case 'bbb':
@@ -2030,7 +2030,7 @@ var Lt = 'midnight',
     B: function (t, e, n) {
       var r,
         a = t.getUTCHours()
-      switch (((r = a >= 17 ? Rt : a >= 12 ? Qt : a >= 4 ? Ft : It), e)) {
+      switch (((r = a >= 17 ? Rt : a >= 12 ? Qt : a >= 4 ? Wt : It), e)) {
         case 'B':
         case 'BB':
         case 'BBB':
@@ -2047,10 +2047,10 @@ var Lt = 'midnight',
         var r = t.getUTCHours() % 12
         return 0 === r && (r = 12), n.ordinalNumber(r, {unit: 'hour'})
       }
-      return Nt(t, e)
+      return Et(t, e)
     },
     H: function (t, e, n) {
-      return 'Ho' === e ? n.ordinalNumber(t.getUTCHours(), {unit: 'hour'}) : qt(t, e)
+      return 'Ho' === e ? n.ordinalNumber(t.getUTCHours(), {unit: 'hour'}) : Nt(t, e)
     },
     K: function (t, e, n) {
       var r = t.getUTCHours() % 12
@@ -2061,10 +2061,10 @@ var Lt = 'midnight',
       return 0 === r && (r = 24), 'ko' === e ? n.ordinalNumber(r, {unit: 'hour'}) : St(r, e.length)
     },
     m: function (t, e, n) {
-      return 'mo' === e ? n.ordinalNumber(t.getUTCMinutes(), {unit: 'minute'}) : Bt(t, e)
+      return 'mo' === e ? n.ordinalNumber(t.getUTCMinutes(), {unit: 'minute'}) : Ot(t, e)
     },
     s: function (t, e, n) {
-      return 'so' === e ? n.ordinalNumber(t.getUTCSeconds(), {unit: 'second'}) : Ot(t, e)
+      return 'so' === e ? n.ordinalNumber(t.getUTCSeconds(), {unit: 'second'}) : qt(t, e)
     },
     S: function (t, e) {
       return Ht(t, e)
@@ -2074,7 +2074,7 @@ var Lt = 'midnight',
       if (0 === a) return 'Z'
       switch (e) {
         case 'X':
-          return At(a)
+          return Gt(a)
         case 'XXXX':
         case 'XX':
           return zt(a)
@@ -2088,7 +2088,7 @@ var Lt = 'midnight',
       var a = (r._originalDate || t).getTimezoneOffset()
       switch (e) {
         case 'x':
-          return At(a)
+          return Gt(a)
         case 'xxxx':
         case 'xx':
           return zt(a)
@@ -2104,7 +2104,7 @@ var Lt = 'midnight',
         case 'O':
         case 'OO':
         case 'OOO':
-          return 'GMT' + Gt(a, ':')
+          return 'GMT' + At(a, ':')
         case 'OOOO':
         default:
           return 'GMT' + zt(a, ':')
@@ -2116,7 +2116,7 @@ var Lt = 'midnight',
         case 'z':
         case 'zz':
         case 'zzz':
-          return 'GMT' + Gt(a, ':')
+          return 'GMT' + At(a, ':')
         case 'zzzz':
         default:
           return 'GMT' + zt(a, ':')
@@ -2130,7 +2130,7 @@ var Lt = 'midnight',
       return St((r._originalDate || t).getTime(), e.length)
     },
   }
-function Gt(t, e) {
+function At(t, e) {
   var n = t > 0 ? '-' : '+',
     r = Math.abs(t),
     a = Math.floor(r / 60),
@@ -2139,7 +2139,7 @@ function Gt(t, e) {
   var o = e || ''
   return n + String(a) + o + St(i, 2)
 }
-function At(t, e) {
+function Gt(t, e) {
   return t % 60 == 0 ? (t > 0 ? '-' : '+') + St(Math.abs(t) / 60, 2) : zt(t, e)
 }
 function zt(t, e) {
@@ -2153,7 +2153,7 @@ var jt = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g,
   Jt = /^'([^]*?)'?$/,
   Zt = /''/g,
   _t = /[a-zA-Z]/
-function $t(t, e, n) {
+function Vt(t, e, n) {
   h(2, arguments)
   var r = String(e),
     a = n || {},
@@ -2165,15 +2165,15 @@ function $t(t, e, n) {
     throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
   var c = i.options && i.options.weekStartsOn,
     d = null == c ? 0 : f(c),
-    w = null == a.weekStartsOn ? d : f(a.weekStartsOn)
-  if (!(w >= 0 && w <= 6)) throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
+    g = null == a.weekStartsOn ? d : f(a.weekStartsOn)
+  if (!(g >= 0 && g <= 6)) throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   if (!i.localize) throw new RangeError('locale must contain localize property')
   if (!i.formatLong) throw new RangeError('locale must contain formatLong property')
   var v = m(t)
   if (!Ut(v)) throw new RangeError('Invalid time value')
   var y = p(v),
-    b = g(v, y),
-    T = {firstWeekContainsDate: s, weekStartsOn: w, locale: i, _originalDate: v},
+    b = w(v, y),
+    T = {firstWeekContainsDate: s, weekStartsOn: g, locale: i, _originalDate: v},
     k = r
       .match(Kt)
       .map(function (t) {
@@ -2185,7 +2185,7 @@ function $t(t, e, n) {
       .map(function (t) {
         if ("''" === t) return "'"
         var e = t[0]
-        if ("'" === e) return Vt(t)
+        if ("'" === e) return $t(t)
         var n = Xt[e]
         if (n)
           return (
@@ -2202,7 +2202,7 @@ function $t(t, e, n) {
       .join('')
   return k
 }
-function Vt(t) {
+function $t(t) {
   return t.match(Jt)[1].replace(Zt, "'")
 }
 /*! *****************************************************************************
@@ -2281,7 +2281,7 @@ function ie(t) {
     i =
       void 0 === a
         ? function (t) {
-            return $t(t, 'iiiiii')
+            return Vt(t, 'iiiiii')
           }
         : a,
     o = new Date()
@@ -2298,7 +2298,7 @@ function oe(t) {
     o =
       void 0 === i
         ? function (t) {
-            return $t(t, 'dd')
+            return Vt(t, 'dd')
           }
         : i,
     u = new Date(e, n),
@@ -2330,13 +2330,13 @@ function oe(t) {
   )
 }
 var ue = function (t) {
-    return $t(t, 'dd')
+    return Vt(t, 'dd')
   },
   se = function (t) {
-    return $t(t, 'eeeeee')
+    return Vt(t, 'eeeeee')
   },
   ce = function (t) {
-    return $t(t, 'MMMM yyyy')
+    return Vt(t, 'MMMM yyyy')
   }
 function de(e) {
   var n = e.year,
@@ -2391,13 +2391,13 @@ function me(t) {
   var e = m(t)
   return e.setHours(0, 0, 0, 0), e
 }
-function we(t, e) {
+function ge(t, e) {
   h(2, arguments)
   var n = me(t),
     r = me(e)
   return n.getTime() === r.getTime()
 }
-function ge(t, e) {
+function we(t, e) {
   h(2, arguments)
   var n = m(t),
     r = f(e)
@@ -2413,7 +2413,7 @@ var ve = function (t, e) {
   return (
     void 0 === t && (t = []),
     t.some(function (t) {
-      return we(e, t)
+      return ge(e, t)
     })
   )
 }
@@ -2421,13 +2421,13 @@ function ye(t, e, n) {
   return !(!e || !n) && he(t, {start: e, end: n})
 }
 function be(t, e, n) {
-  return !!((e && we(t, e)) || (n && we(t, n)))
+  return !!((e && ge(t, e)) || (n && ge(t, n)))
 }
 function De(t, e) {
-  return !(!e || !we(t, e))
+  return !(!e || !ge(t, e))
 }
 function Te(t, e) {
-  return !(!e || !we(t, e))
+  return !(!e || !ge(t, e))
 }
 function pe(t) {
   var e = t.date,
@@ -2478,7 +2478,7 @@ function Ce(t, e) {
   return (
     t > 1 &&
       (a = Array.from(Array(t - 1).keys()).reduce(function (t) {
-        return (r = ge(t[t.length - 1].date, 1)), t.concat([ke(r)])
+        return (r = we(t[t.length - 1].date, 1)), t.concat([ke(r)])
       }, a)),
     a
   )
@@ -2487,13 +2487,13 @@ function Me(t, e, n, r) {
   var a = t[r ? (n > 0 ? 0 : t.length - r) : n > 0 ? t.length - 1 : 0].date
   return Array.from(Array(e).keys()).reduce(function (t) {
     return (
-      (a = 0 === t.length ? ge(a, n) : ge(a, n >= 0 ? 1 : -1)),
+      (a = 0 === t.length ? we(a, n) : we(a, n >= 0 ? 1 : -1)),
       n > 0 ? t.concat([ke(a)]) : [ke(a)].concat(t)
     )
   }, [])
 }
 function Ue(t, e, n) {
-  return t && 'string' == typeof e ? $t(t, e) : t && 'function' == typeof e ? e(t) : n
+  return t && 'string' == typeof e ? Vt(t, e) : t && 'function' == typeof e ? e(t) : n
 }
 function Se(t) {
   var e = t.startDate,
@@ -2519,8 +2519,8 @@ function Se(t) {
   )
 }
 var Pe = 'startDate',
-  Ee = 'endDate'
-function Ye(t) {
+  Ye = 'endDate'
+function Be(t) {
   var a = t.startDate,
     i = t.endDate,
     o = t.focusedInput,
@@ -2532,8 +2532,8 @@ function Ye(t) {
     f = void 0 !== l && l,
     h = t.minBookingDays,
     m = void 0 === h ? 1 : h,
-    w = t.numberOfMonths,
-    g = void 0 === w ? 2 : w,
+    g = t.numberOfMonths,
+    w = void 0 === g ? 2 : g,
     v = t.firstDayOfWeek,
     y = void 0 === v ? 1 : v,
     b = t.isDateBlocked,
@@ -2548,16 +2548,16 @@ function Ye(t) {
     k = t.changeActiveMonthOnSelect,
     x = void 0 === k || k,
     C = e(function () {
-      return Ce(g, a || d || null)
+      return Ce(w, a || d || null)
     }),
     M = C[0],
     U = C[1],
     S = e(null),
     P = S[0],
-    E = S[1],
-    Y = e(a),
-    N = Y[0],
-    q = Y[1]
+    Y = S[1],
+    B = e(a),
+    E = B[0],
+    N = B[1]
   n(function () {
     return (
       'undefined' != typeof window &&
@@ -2568,11 +2568,11 @@ function Ye(t) {
       }
     )
   })
-  var B = function (t) {
+  var O = function (t) {
       return ve(p, t) || D(t)
     },
-    O = function (t) {
-      q(t), (!N || (N && !we(t, N))) && U(Ce(g, t))
+    q = function (t) {
+      N(t), (!E || (E && !ge(t, E))) && U(Ce(w, t))
     },
     H = function (t) {
       return pe({
@@ -2582,7 +2582,7 @@ function Ye(t) {
         startDate: a,
         endDate: i,
         minBookingDays: m,
-        isDateBlockedFn: B,
+        isDateBlockedFn: O,
       })
     }
   function L(t) {
@@ -2591,53 +2591,53 @@ function Ye(t) {
         'ArrowLeft' === t.key ||
         'ArrowDown' === t.key ||
         'ArrowUp' === t.key) &&
-      !N
+      !E
     ) {
       var e = M[0]
-      O(e.date), U(Ce(g, e.date))
+      q(e.date), U(Ce(w, e.date))
     }
   }
-  var W = r(
+  var F = r(
       function () {
-        U(Me(M, g, -1)), q(null)
+        U(Me(M, w, -1)), N(null)
       },
-      [M, g],
+      [M, w],
     ),
-    F = r(
+    W = r(
       function () {
-        U(Me(M, g, -1, 1)), q(null)
+        U(Me(M, w, -1, 1)), N(null)
       },
-      [M, g],
+      [M, w],
     ),
     Q = r(
       function () {
-        U(Me(M, g, 1)), q(null)
+        U(Me(M, w, 1)), N(null)
       },
-      [M, g],
+      [M, w],
     ),
     R = r(
       function () {
-        U(Me(M, g, 1, 1)), q(null)
+        U(Me(M, w, 1, 1)), N(null)
       },
-      [M, g],
+      [M, w],
     ),
     I = r(
       function (t) {
-        U(Ce(g, t)), q(null)
+        U(Ce(w, t)), N(null)
       },
-      [g],
+      [w],
     ),
     X = r(
       function (t) {
-        void 0 === t && (t = 1), U(Me(M, g, -(12 * t - g + 1))), q(null)
+        void 0 === t && (t = 1), U(Me(M, w, -(12 * t - w + 1))), N(null)
       },
-      [M, g],
+      [M, w],
     ),
-    G = r(
+    A = r(
       function (t) {
-        void 0 === t && (t = 1), U(Me(M, g, 12 * t - g + 1)), q(null)
+        void 0 === t && (t = 1), U(Me(M, w, 12 * t - w + 1)), N(null)
       },
-      [M, g],
+      [M, w],
     )
   return {
     firstDayOfWeek: y,
@@ -2658,7 +2658,7 @@ function Ye(t) {
           ? !ee({start: i, end: te(i, o - 1)}).some(function (t) {
               return a(t)
             })
-          : n && !r && i && he(e, {start: n, end: te(n, o - 1)}) && we(n, i) && o > 1
+          : n && !r && i && he(e, {start: n, end: te(n, o - 1)}) && ge(n, i) && o > 1
           ? !ee({start: n, end: te(n, o - 1)}).some(function (t) {
               return a(t)
             })
@@ -2673,7 +2673,7 @@ function Ye(t) {
         endDate: i,
         minBookingDays: m,
         exactMinBookingDays: f,
-        isDateBlocked: B,
+        isDateBlocked: O,
       })
     },
     isFirstOrLastSelectedDate: function (t) {
@@ -2686,11 +2686,11 @@ function Ye(t) {
       return Te(t, i)
     },
     isDateBlocked: H,
-    numberOfMonths: g,
+    numberOfMonths: w,
     isDateFocused: function (t) {
-      return !!N && we(t, N)
+      return !!E && ge(t, E)
     },
-    focusedDate: N,
+    focusedDate: E,
     hoveredDate: P,
     onResetDates: function () {
       c({startDate: null, endDate: null, focusedInput: 'startDate'})
@@ -2698,7 +2698,7 @@ function Ye(t) {
     onDateHover: function (t) {
       if (t) {
         if (t) {
-          var e = !H(t) || (a && we(t, a)),
+          var e = !H(t) || (a && ge(t, a)),
             n = !u || !le(t, te(u, -1)),
             r = !s || !fe(t, s),
             o = te(t, m - 1),
@@ -2706,11 +2706,11 @@ function Ye(t) {
             d = !s || !fe(o, s),
             l = f && m > 1 && n && r && c && d,
             h = a && !i && !f && n && r,
-            w = !(m > 1 && a) || he(t, {start: a, end: te(a, m - 2)}),
-            g = a && we(t, a) && w
-          e && (l || h || g) ? E(t) : null !== P && E(null)
+            g = !(m > 1 && a) || he(t, {start: a, end: te(a, m - 2)}),
+            w = a && ge(t, a) && g
+          e && (l || h || w) ? Y(t) : null !== P && Y(null)
         }
-      } else E(null)
+      } else Y(null)
     },
     onDateSelect: function (t) {
       ;('endDate' === o || 'startDate' === o) &&
@@ -2721,42 +2721,42 @@ function Ye(t) {
         exactMinBookingDays: f,
         minBookingDate: u,
         maxBookingDate: s,
-        isDateBlocked: B,
+        isDateBlocked: O,
         startDate: t,
         endDate: null,
       })
         ? c({startDate: t, endDate: te(t, m - 1), focusedInput: null})
         : (('endDate' === o && a && le(t, a)) || ('startDate' === o && i && fe(t, i))) &&
           !f &&
-          Se({minBookingDays: m, isDateBlocked: B, startDate: t, endDate: null})
+          Se({minBookingDays: m, isDateBlocked: O, startDate: t, endDate: null})
         ? c({endDate: null, startDate: t, focusedInput: 'endDate'})
         : 'startDate' === o &&
           !f &&
-          Se({minBookingDays: m, isDateBlocked: B, endDate: i, startDate: t})
+          Se({minBookingDays: m, isDateBlocked: O, endDate: i, startDate: t})
         ? c({endDate: i, startDate: t, focusedInput: 'endDate'})
         : 'startDate' === o &&
           !f &&
-          Se({minBookingDays: m, isDateBlocked: B, endDate: null, startDate: t})
+          Se({minBookingDays: m, isDateBlocked: O, endDate: null, startDate: t})
         ? c({endDate: null, startDate: t, focusedInput: 'endDate'})
         : 'endDate' === o &&
           a &&
           !le(t, a) &&
           !f &&
-          Se({minBookingDays: m, isDateBlocked: B, startDate: a, endDate: t}) &&
+          Se({minBookingDays: m, isDateBlocked: O, startDate: a, endDate: t}) &&
           c({startDate: a, endDate: t, focusedInput: null}),
-        'endDate' !== o && (!N || (N && !we(t, N))) && x && U(Ce(g, t))
+        'endDate' !== o && (!E || (E && !ge(t, E))) && x && U(Ce(w, t))
     },
-    onDateFocus: O,
-    goToPreviousMonths: W,
-    goToPreviousMonthsByOneMonth: F,
+    onDateFocus: q,
+    goToPreviousMonths: F,
+    goToPreviousMonthsByOneMonth: W,
     goToNextMonths: Q,
     goToNextMonthsByOneMonth: R,
     goToDate: I,
     goToPreviousYear: X,
-    goToNextYear: G,
+    goToNextYear: A,
   }
 }
-function Ne(t) {
+function Ee(t) {
   var e = t.date,
     n = t.focusedDate,
     a = t.isDateSelected,
@@ -2799,9 +2799,197 @@ function Ne(t) {
     onMouseEnter: h,
   }
 }
+var Ne = 'date',
+  Oe = 'time'
+function qe(t) {
+  var n = t.selectedDate,
+    a = t.minBookingDate,
+    i = t.maxBookingDate,
+    o = t.onDateChange,
+    u = t.initialVisibleMonth,
+    s = t.numberOfMonths,
+    c = void 0 === s ? 2 : s,
+    d = t.firstDayOfWeek,
+    l = void 0 === d ? 1 : d,
+    f = t.isDateBlocked,
+    h =
+      void 0 === f
+        ? function () {
+            return !1
+          }
+        : f,
+    m = t.unavailableDates,
+    g = void 0 === m ? [] : m,
+    w = e(function () {
+      return Ce(c, n || u || null)
+    }),
+    v = w[0],
+    y = w[1]
+  var b = r(
+      function () {
+        y(Me(v, c, -1))
+      },
+      [v, c],
+    ),
+    D = r(
+      function () {
+        y(Me(v, c, -1, 1))
+      },
+      [v, c],
+    ),
+    T = r(
+      function () {
+        y(Me(v, c, 1))
+      },
+      [v, c],
+    ),
+    p = r(
+      function () {
+        y(Me(v, c, 1, 1))
+      },
+      [v, c],
+    ),
+    k = r(
+      function (t) {
+        y(Ce(c, t))
+      },
+      [c],
+    ),
+    x = r(
+      function (t) {
+        void 0 === t && (t = 1), y(Me(v, c, -(12 * t - c + 1)))
+      },
+      [v, c],
+    ),
+    C = r(
+      function (t) {
+        void 0 === t && (t = 1), y(Me(v, c, 12 * t - c + 1))
+      },
+      [v, c],
+    )
+  return {
+    activeMonths: v,
+    firstDayOfWeek: l,
+    disabledDatesByUser: function (t) {
+      return ve(g, t) || h(t)
+    },
+    isDateBlocked: function (t) {
+      return (function (t) {
+        var e = t.date,
+          n = t.minBookingDate,
+          r = t.maxBookingDate,
+          a = t.unavailableDates,
+          i = void 0 === a ? [] : a,
+          o = n ? new Date(n.getFullYear(), n.getMonth(), n.getDate(), 0, 0, 0) : n,
+          u = r ? new Date(r.getFullYear(), r.getMonth(), r.getDate(), 0, 0, 0) : r
+        return !!(ve(i, e) || (o && le(e, o)) || (u && fe(e, u)))
+      })({date: t, minBookingDate: a, maxBookingDate: i, unavailableDates: g})
+    },
+    onResetDates: function () {
+      o({focusedTarget: null, selectedDate: null})
+    },
+    onDateSelect: function (t) {
+      o({selectedDate: t, focusedTarget: 'date'})
+    },
+    onTimeSelect: function (t) {
+      o({selectedDate: t, focusedTarget: null})
+    },
+    goToPreviousMonths: b,
+    goToPreviousMonthsByOneMonth: D,
+    goToNextMonths: T,
+    goToNextMonthsByOneMonth: p,
+    goToDate: k,
+    goToPreviousYear: x,
+    goToNextYear: C,
+  }
+}
+function He(t) {
+  var e = t.date,
+    n = t.onTimeChange
+  return {
+    onClick: r(
+      function () {
+        return n(e)
+      },
+      [e, n],
+    ),
+  }
+}
+function Le(t, e) {
+  h(2, arguments)
+  var n = m(t),
+    r = m(e)
+  return n.getTime() === r.getTime()
+}
+function Fe(t) {
+  var e = t.minTime,
+    n = t.maxTime,
+    r = t.minutesStep,
+    a = void 0 === r ? 5 : r,
+    i = t.timeLabelFormat,
+    o =
+      void 0 === i
+        ? function (t) {
+            return Vt(t, 'HH:mm:ss')
+          }
+        : i,
+    u = me(new Date()),
+    s = 1440 / a
+  return Array.from({length: s})
+    .map(function (t, e) {
+      return (function (t, e) {
+        h(2, arguments)
+        var n = f(e)
+        return g(t, 6e4 * n)
+      })(u, e * a)
+    })
+    .map(function (t) {
+      return (function (t) {
+        var e,
+          n,
+          r,
+          a,
+          i,
+          o,
+          u = t.date,
+          s = t.minTime,
+          c = t.maxTime,
+          d = t.timeLabelFormat,
+          l = new Date()
+        s &&
+          (l.setHours(null !== (e = null == s ? void 0 : s.hours) && void 0 !== e ? e : 0),
+          l.setMinutes(null !== (n = null == s ? void 0 : s.minuets) && void 0 !== n ? n : 0),
+          l.setSeconds(null !== (r = null == s ? void 0 : s.seconds) && void 0 !== r ? r : 0))
+        var f = new Date()
+        c &&
+          (l.setHours(null !== (a = null == c ? void 0 : c.hours) && void 0 !== a ? a : 23),
+          l.setMinutes(null !== (i = null == c ? void 0 : c.minuets) && void 0 !== i ? i : 59),
+          l.setSeconds(null !== (o = null == c ? void 0 : c.seconds) && void 0 !== o ? o : 59))
+        var h = !!s && (Le(u, l) || le(u, l)),
+          m = !!c && (Le(u, f) || fe(u, f))
+        return {date: u, timeLabel: d(u), disabled: h || m}
+      })({date: t, minTime: e, maxTime: n, timeLabelFormat: o})
+    })
+}
+function We(e) {
+  var n = e.minTime,
+    r = e.maxTime,
+    a = e.minutesStep,
+    i = e.timeLabelFormat
+  return {
+    times: t(
+      function () {
+        return Fe({minTime: n, maxTime: r, minutesStep: a, timeLabelFormat: i})
+      },
+      [n, r, a, i],
+    ),
+  }
+}
 export {
-  Ee as END_DATE,
+  Ne as DATE,
+  Ye as END_DATE,
   Pe as START_DATE,
+  Oe as TIME,
   ue as dayLabelFormat,
   xe as getCurrentYearMonthAndDate,
   ke as getDateMonthAndYear,
@@ -2816,8 +3004,11 @@ export {
   De as isStartDate,
   ce as monthLabelFormat,
   xt as parseDate,
-  Ye as useDatepicker,
-  Ne as useDay,
+  qe as useDateTimePicker,
+  Be as useDatepicker,
+  Ee as useDay,
   de as useMonth,
+  He as useTime,
+  We as useTimes,
   se as weekdayLabelFormat,
 }
