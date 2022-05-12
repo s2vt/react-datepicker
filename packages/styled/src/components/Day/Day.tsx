@@ -236,7 +236,6 @@ function Day({day, date}: DayProps) {
     onDateFocus,
     onDateSelect,
     onDateHover,
-    dayRef,
   })
 
   const themeContext = useContext(ThemeContext)

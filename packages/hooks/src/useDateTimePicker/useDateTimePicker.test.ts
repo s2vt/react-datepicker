@@ -1,6 +1,7 @@
 import {act, renderHook} from '@testing-library/react-hooks'
-import {addMonths} from 'date-fns'
+import {addMonths, startOfDay} from 'date-fns'
 import {MonthType} from '../useDatepicker'
+import {Time} from '../useTimes/useTimes'
 import {useDateTimePicker, UseDateTimePickerProps} from './useDateTimePicker'
 
 describe('useDateTimePicker', () => {
@@ -82,19 +83,19 @@ describe('useDateTimePicker', () => {
   describe('onTimeSelect', () => {
     test('should execute onDateChange with selected date', () => {
       // given
-      const date = new Date()
+      const time: Time = {hours: 0, minuets: 0, seconds: 0}
 
       const {result} = setup({})
 
       // when
       act(() => {
-        result.current.onTimeSelect(date)
+        result.current.onTimeSelect(time)
       })
 
       // then
       expect(onDateChange).toBeCalledWith({
         focusedTarget: null,
-        selectedDate: date,
+        selectedDate: startOfDay(selectedDate),
       })
     })
   })

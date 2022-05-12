@@ -1,38 +1,31 @@
 import {useMemo} from 'react'
 import {getTimes} from './useTimes.utils'
 
-export interface Time {
+export interface TimeType extends Time {
   timeLabel: string
-  date: Date
   disabled?: boolean
 }
 
-export type CompareTime = {
+export type Time = {
   hours: number
   minuets: number
   seconds: number
 }
 
 export interface UseTimesProps {
-  baseDate: Date
-  onTimeChange(date: Date): void
-  minTime?: CompareTime
-  maxTime?: CompareTime
+  minTime?: Time
+  maxTime?: Time
   minutesStep?: number
   timeLabelFormat?: (date: Date) => string
 }
 
-export function useTimes({
-  baseDate,
-  minTime,
-  maxTime,
-  minutesStep,
-  timeLabelFormat,
-}: UseTimesProps) {
-  const times = useMemo(
-    () => getTimes({baseDate, minTime, maxTime, minutesStep, timeLabelFormat}),
-    [baseDate, minTime, maxTime, minutesStep, timeLabelFormat],
-  )
+export function useTimes({minTime, maxTime, minutesStep, timeLabelFormat}: UseTimesProps) {
+  const times = useMemo(() => getTimes({minTime, maxTime, minutesStep, timeLabelFormat}), [
+    minTime,
+    maxTime,
+    minutesStep,
+    timeLabelFormat,
+  ])
 
   return {times}
 }

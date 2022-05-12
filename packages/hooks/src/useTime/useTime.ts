@@ -1,12 +1,13 @@
 import {useCallback} from 'react'
+import {Time} from '../useTimes/useTimes'
 
 export interface UseTimeProps {
-  date: Date
-  onTimeChange(date: Date): void
+  time: Time
+  onTimeSelect(time: Time): void
 }
 
-export function useTime({date, onTimeChange}: UseTimeProps) {
-  const onClick = useCallback(() => onTimeChange(date), [date, onTimeChange])
+export function useTime({time, onTimeSelect}: UseTimeProps) {
+  const onClick = useCallback(() => onTimeSelect(time), [time, onTimeSelect])
 
   return {onClick}
 }

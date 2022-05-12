@@ -12,9 +12,6 @@ interface UseDayProps {
   onDateFocus(date: Date): void
   onDateSelect(date: Date): void
   onDateHover(date: Date): void
-
-  // Not used anymore
-  dayRef?: React.RefObject<HTMLButtonElement>
 }
 
 function useDay({

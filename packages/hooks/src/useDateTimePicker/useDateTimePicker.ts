@@ -6,6 +6,7 @@ import {
   getNextActiveMonth,
   isInUnavailableDates,
 } from '../useDatepicker/useDatepicker.utils'
+import {Time} from '../useTimes/useTimes'
 import {isDateBlocked as isDateBlockedFn} from './useDateTimePicker.utils'
 
 export const DATE = 'date'
@@ -74,8 +75,15 @@ export function useDateTimePicker({
     onDateChange({selectedDate: date, focusedTarget: TIME})
   }
 
-  function onTimeSelect(date: Date) {
-    onDateChange({selectedDate: date, focusedTarget: null})
+  function onTimeSelect(time: Time) {
+    const {hours, minuets, seconds} = time
+
+    const copied = selectedDate ? new Date(selectedDate) : new Date()
+    copied.setHours(hours)
+    copied.setMinutes(minuets)
+    copied.setSeconds(seconds)
+
+    onDateChange({selectedDate: copied, focusedTarget: null})
   }
 
   const goToPreviousMonths = useCallback(() => {

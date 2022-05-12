@@ -1,15 +1,16 @@
 import {act, renderHook} from '@testing-library/react-hooks'
+import {Time} from '../useTimes/useTimes'
 import {useTime, UseTimeProps} from './useTime'
 
 describe('useTime', () => {
-  const date = new Date('2020/01/01')
-  const onTimeChange = jest.fn()
+  const time: Time = {hours: 0, minuets: 0, seconds: 0}
+  const onTimeSelect = jest.fn()
 
   const setup = (props: Partial<UseTimeProps>) =>
-    renderHook(() => useTime({date, onTimeChange, ...props}))
+    renderHook(() => useTime({time, onTimeSelect, ...props}))
 
   describe('onClick', () => {
-    test('should execute onTimeChange', () => {
+    test('should execute onTimeSelect', () => {
       // given
       const {result} = setup({})
 
@@ -19,7 +20,7 @@ describe('useTime', () => {
       })
 
       // then
-      expect(onTimeChange).toBeCalledWith(date)
+      expect(onTimeSelect).toBeCalledWith(time)
     })
   })
 })

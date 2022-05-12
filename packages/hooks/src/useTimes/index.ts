@@ -1,3 +1,3 @@
-import {useTimes, UseTimesProps} from './useTimes'
+import {useTimes, UseTimesProps, Time} from './useTimes'
 
-export {useTimes, UseTimesProps}
+export {useTimes, UseTimesProps, Time}
