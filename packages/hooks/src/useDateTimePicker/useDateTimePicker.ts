@@ -1,3 +1,4 @@
+import {isSameDay} from 'date-fns'
 import {useCallback, useState} from 'react'
 import {FirstDayOfWeek} from '../useDatepicker'
 import {
@@ -51,6 +52,8 @@ export function useDateTimePicker({
   const disabledDatesByUser = (date: Date) => {
     return isInUnavailableDates(unavailableDates, date) || isDateBlockedProps(date)
   }
+
+  const isDateSelected = (date: Date) => (selectedDate ? isSameDay(date, selectedDate) : false)
 
   const isDateBlocked = (date: Date) =>
     isDateBlockedFn({
@@ -120,6 +123,7 @@ export function useDateTimePicker({
     activeMonths,
     firstDayOfWeek,
     disabledDatesByUser,
+    isDateSelected,
     isDateBlocked,
     onResetDates,
     focusedTarget,

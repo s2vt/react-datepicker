@@ -43,6 +43,7 @@ import {
 } from './useDateTimePicker'
 import {UseTimeProps, useTime} from './useTime'
 import {UseTimesProps, useTimes} from './useTimes'
+import {UseDateTimeDayProps, useDateTimeDay} from './useDateTimeDay'
 
 export {
   useDay,
@@ -86,4 +87,6 @@ export {
   useTime,
   UseTimesProps,
   useTimes,
+  UseDateTimeDayProps,
+  useDateTimeDay,
 }
