@@ -1,5 +1,5 @@
 import {act, renderHook} from '@testing-library/react-hooks'
-import useTime, {UseTimeProps} from './useTime'
+import {useTime, UseTimeProps} from './useTime'
 
 describe('useTime', () => {
   const date = new Date('2020/01/01')

@@ -1,7 +1,7 @@
 import {act, renderHook} from '@testing-library/react-hooks'
 import {addMonths} from 'date-fns'
 import {MonthType} from '../useDatepicker'
-import useDateTimePicker, {UseDateTimePickerProps} from './useDateTimePicker'
+import {useDateTimePicker, UseDateTimePickerProps} from './useDateTimePicker'
 
 describe('useDateTimePicker', () => {
   const onDateChange = jest.fn()

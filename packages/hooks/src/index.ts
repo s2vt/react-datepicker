@@ -33,6 +33,16 @@ import {
   OnDatesChangeProps,
 } from './useDatepicker'
 import useDay from './useDay'
+import {
+  useDateTimePicker,
+  DATE,
+  FocusedTarget,
+  OnDateTimeChangeProps,
+  TIME,
+  UseDateTimePickerProps,
+} from './useDateTimePicker'
+import {UseTimeProps, useTime} from './useTime'
+import {UseTimesProps, useTimes} from './useTimes'
 
 export {
   useDay,
@@ -66,4 +76,14 @@ export {
   weekdayLabelFormat,
   monthLabelFormat,
   parseDate,
+  useDateTimePicker,
+  DATE,
+  FocusedTarget,
+  OnDateTimeChangeProps,
+  TIME,
+  UseDateTimePickerProps,
+  UseTimeProps,
+  useTime,
+  UseTimesProps,
+  useTimes,
 }

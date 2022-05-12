@@ -1,4 +1,5 @@
 import {useCallback, useState} from 'react'
+import {FirstDayOfWeek} from '../useDatepicker'
 import {
   getInitialMonths,
   getNextActiveMonth,
@@ -16,8 +17,6 @@ export interface OnDateTimeChangeProps {
   selectedDate: Date | null
 }
 
-export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6
-
 export interface UseDateTimePickerProps {
   onDateChange(data: OnDateTimeChangeProps): void
   minBookingDate?: Date
@@ -30,7 +29,7 @@ export interface UseDateTimePickerProps {
   unavailableDates?: Date[]
 }
 
-export default function useDateTimePicker({
+export function useDateTimePicker({
   selectedDate,
   minBookingDate,
   maxBookingDate,

@@ -22,7 +22,7 @@ export interface UseTimesProps {
   timeLabelFormat?: (date: Date) => string
 }
 
-export default function useTimes({minTime, maxTime, minutesStep, timeLabelFormat}: UseTimesProps) {
+export function useTimes({minTime, maxTime, minutesStep, timeLabelFormat}: UseTimesProps) {
   const times = useMemo(() => getTimes({minTime, maxTime, minutesStep, timeLabelFormat}), [
     minTime,
     maxTime,

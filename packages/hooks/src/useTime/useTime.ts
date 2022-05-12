@@ -5,7 +5,7 @@ export interface UseTimeProps {
   onTimeChange(date: Date): void
 }
 
-export default function useTime({date, onTimeChange}: UseTimeProps) {
+export function useTime({date, onTimeChange}: UseTimeProps) {
   const onClick = useCallback(() => onTimeChange(date), [date, onTimeChange])
 
   return {onClick}
