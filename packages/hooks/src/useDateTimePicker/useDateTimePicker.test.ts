@@ -73,7 +73,7 @@ describe('useDateTimePicker', () => {
 
       // then
       expect(onDateChange).toBeCalledWith({
-        focusedTarget: 'date',
+        focusedTarget: 'time',
         selectedDate: date,
       })
     })

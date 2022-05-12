@@ -71,7 +71,7 @@ export function useDateTimePicker({
   }
 
   function onDateSelect(date: Date) {
-    onDateChange({selectedDate: date, focusedTarget: DATE})
+    onDateChange({selectedDate: date, focusedTarget: TIME})
   }
 
   function onTimeSelect(date: Date) {
