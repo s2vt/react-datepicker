@@ -22,6 +22,7 @@ export interface UseDateTimePickerProps {
   minBookingDate?: Date
   maxBookingDate?: Date
   selectedDate: Date | null
+  focusedTarget: FocusedTarget
   numberOfMonths?: number
   firstDayOfWeek?: FirstDayOfWeek
   initialVisibleMonth?: Date
@@ -33,6 +34,7 @@ export function useDateTimePicker({
   selectedDate,
   minBookingDate,
   maxBookingDate,
+  focusedTarget,
   onDateChange,
   initialVisibleMonth,
   numberOfMonths = 2,
@@ -120,6 +122,7 @@ export function useDateTimePicker({
     disabledDatesByUser,
     isDateBlocked,
     onResetDates,
+    focusedTarget,
     onDateSelect,
     onTimeSelect,
     goToPreviousMonths,

@@ -10,6 +10,7 @@ describe('useDateTimePicker', () => {
   const setup = (props: Partial<UseDateTimePickerProps>) =>
     renderHook(() =>
       useDateTimePicker({
+        focusedTarget: null,
         onDateChange,
         numberOfMonths: 1,
         selectedDate,
