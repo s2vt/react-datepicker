@@ -1,7 +1,7 @@
-import {CompareTime, Time} from './useTimes'
+import {TimeType, Time} from './useTimes'
 export interface GetTimeProps {
-  minTime?: CompareTime
-  maxTime?: CompareTime
+  minTime?: Time
+  maxTime?: Time
   minutesStep?: number
   timeLabelFormat?: (date: Date) => string
 }
@@ -10,4 +10,4 @@ export declare function getTimes({
   maxTime,
   minutesStep,
   timeLabelFormat,
-}: GetTimeProps): Time[]
+}: GetTimeProps): TimeType[]

@@ -42,7 +42,8 @@ import {
   UseDateTimePickerProps,
 } from './useDateTimePicker'
 import {UseTimeProps, useTime} from './useTime'
-import {UseTimesProps, useTimes} from './useTimes'
+import {UseTimesProps, useTimes, Time} from './useTimes'
+import {UseDateTimeDayProps, useDateTimeDay} from './useDateTimeDay'
 export {
   useDay,
   useMonth,
@@ -85,4 +86,7 @@ export {
   useTime,
   UseTimesProps,
   useTimes,
+  Time,
+  UseDateTimeDayProps,
+  useDateTimeDay,
 }

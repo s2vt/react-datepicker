@@ -1,4 +1,5 @@
 import {FirstDayOfWeek} from '../useDatepicker'
+import {Time} from '../useTimes/useTimes'
 export declare const DATE = 'date'
 export declare const TIME = 'time'
 export declare type FocusedTarget = 'date' | 'time' | null
@@ -33,11 +34,12 @@ export declare function useDateTimePicker({
   activeMonths: import('../useDatepicker').MonthType[]
   firstDayOfWeek: FirstDayOfWeek
   disabledDatesByUser: (date: Date) => boolean
+  isDateSelected: (date: Date) => boolean
   isDateBlocked: (date: Date) => boolean
   onResetDates: () => void
   focusedTarget: FocusedTarget
   onDateSelect: (date: Date) => void
-  onTimeSelect: (date: Date) => void
+  onTimeSelect: (time: Time) => void
   goToPreviousMonths: () => void
   goToPreviousMonthsByOneMonth: () => void
   goToNextMonths: () => void
