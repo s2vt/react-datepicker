@@ -1,18 +1,15 @@
-export interface Time {
+export interface TimeType extends Time {
   timeLabel: string
-  date: Date
   disabled?: boolean
 }
-export declare type CompareTime = {
+export declare type Time = {
   hours: number
   minuets: number
   seconds: number
 }
 export interface UseTimesProps {
-  date: Date
-  onTimeChange(date: Date): void
-  minTime?: CompareTime
-  maxTime?: CompareTime
+  minTime?: Time
+  maxTime?: Time
   minutesStep?: number
   timeLabelFormat?: (date: Date) => string
 }
@@ -22,5 +19,5 @@ export declare function useTimes({
   minutesStep,
   timeLabelFormat,
 }: UseTimesProps): {
-  times: Time[]
+  times: TimeType[]
 }

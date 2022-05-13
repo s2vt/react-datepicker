@@ -4106,7 +4106,6 @@ function Vr(t) {
       onDateFocus: v,
       onDateSelect: y,
       onDateHover: b,
-      dayRef: s,
     }),
     k = o(c),
     x = cr('white', dr.white, k),

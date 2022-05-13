@@ -1,10 +1,11 @@
+import {Time} from '../useTimes/useTimes'
 export interface UseTimeProps {
-  date: Date
-  onTimeChange(date: Date): void
+  time: Time
+  onTimeSelect(time: Time): void
 }
 export declare function useTime({
-  date,
-  onTimeChange,
+  time,
+  onTimeSelect,
 }: UseTimeProps): {
   onClick: () => void
 }

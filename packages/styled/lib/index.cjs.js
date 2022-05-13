@@ -4102,7 +4102,6 @@ function Nr(e) {
       onDateFocus: g,
       onDateSelect: h,
       onDateHover: m,
-      dayRef: i,
     }),
     v = t.useContext(r.ThemeContext),
     w = tr('white', $n.white, v),
