@@ -44,47 +44,62 @@ export function useDateTimePicker({
   isDateBlocked: isDateBlockedProps = () => false,
   unavailableDates = [],
 }: UseDateTimePickerProps) {
-  const [activeMonths, setActiveMonths] = useState(() =>
+  const [activeMonths, setActiveMonths] = useState(
     selectedDate
       ? getInitialMonths(numberOfMonths, selectedDate)
       : getInitialMonths(numberOfMonths, initialVisibleMonth || null),
   )
 
-  const disabledDatesByUser = (date: Date) => {
-    return isInUnavailableDates(unavailableDates, date) || isDateBlockedProps(date)
-  }
+  const disabledDatesByUser = useCallback(
+    (date: Date) => {
+      return isInUnavailableDates(unavailableDates, date) || isDateBlockedProps(date)
+    },
+    [isDateBlockedProps, unavailableDates],
+  )
 
-  const isDateSelected = (date: Date) => (selectedDate ? isSameDay(date, selectedDate) : false)
+  const isDateSelected = useCallback(
+    (date: Date) => (selectedDate ? isSameDay(date, selectedDate) : false),
+    [selectedDate],
+  )
 
-  const isDateBlocked = (date: Date) =>
-    isDateBlockedFn({
-      date,
-      minBookingDate,
-      maxBookingDate,
-      unavailableDates,
-    })
+  const isDateBlocked = useCallback(
+    (date: Date) =>
+      isDateBlockedFn({
+        date,
+        minBookingDate,
+        maxBookingDate,
+        unavailableDates,
+      }),
+    [maxBookingDate, minBookingDate, unavailableDates],
+  )
 
-  function onResetDates() {
+  const onResetDates = useCallback(() => {
     onDateChange({
       focusedTarget: null,
       selectedDate: null,
     })
-  }
+  }, [onDateChange])
 
-  function onDateSelect(date: Date) {
-    onDateChange({selectedDate: date, focusedTarget: TIME})
-  }
+  const onDateSelect = useCallback(
+    (date: Date) => {
+      onDateChange({selectedDate: date, focusedTarget: TIME})
+    },
+    [onDateChange],
+  )
 
-  function onTimeSelect(time: Time) {
-    const {hours, minuets, seconds} = time
+  const onTimeSelect = useCallback(
+    (time: Time) => {
+      const {hours, minuets, seconds} = time
 
-    const copied = selectedDate ? new Date(selectedDate) : new Date()
-    copied.setHours(hours)
-    copied.setMinutes(minuets)
-    copied.setSeconds(seconds)
+      const copied = selectedDate ? new Date(selectedDate) : new Date()
+      copied.setHours(hours)
+      copied.setMinutes(minuets)
+      copied.setSeconds(seconds)
 
-    onDateChange({selectedDate: copied, focusedTarget: null})
-  }
+      onDateChange({selectedDate: copied, focusedTarget: null})
+    },
+    [onDateChange, selectedDate],
+  )
 
   const goToPreviousMonths = useCallback(() => {
     setActiveMonths(getNextActiveMonth(activeMonths, numberOfMonths, -1))
